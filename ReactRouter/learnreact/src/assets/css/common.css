@@ -1,0 +1,267 @@
+:root {
+    --bg: #f4f6fb;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --accent: #3b82f6;
+    --sidebar: #111827;
+    --sidebar-text: #e5e7eb;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: var(--bg);
+    color: #0f172a
+}
+
+.app {
+    display: flex;
+    min-height: 100vh
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px;
+    height: 100vh;             /* full height */
+    position: fixed;           /* stick to left */
+    left: 0;
+    top: 0;
+    background: linear-gradient(180deg, var(--sidebar), #0b1220);
+    color: var(--sidebar-text);
+    padding: 20px;
+    transition: width .22s ease;
+    overflow-y: auto;          /* scroll if content grows */
+}
+
+.sidebar.collapsed {
+    width: 72px;
+}
+
+.sidebar.collapsed {
+    width: 72px
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, .04)
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700
+}
+
+.brand h1 {
+    font-size: 16px;
+    margin: 0
+}
+
+.nav {
+    margin-top: 18px
+}
+
+.nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    margin-bottom: 6px
+}
+
+.nav a:hover {
+    background: rgba(255, 255, 255, .04)
+}
+
+.nav svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0
+}
+
+.sidebar.collapsed .nav a span.label {
+    display: none
+}
+
+.sidebar .footer {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, .6)
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 20px
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px
+}
+
+.search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--card);
+    padding: 8px 12px;
+    border-radius: 10px;
+    box-shadow: 0 1px 0 rgba(16, 24, 40, .02)
+}
+
+.search input {
+    border: 0;
+    outline: 0;
+    font-size: 14px;
+    background: transparent;
+    margin-left: 8px;
+    width: 100%
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.btn {
+    background: var(--accent);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 0;
+    cursor: pointer
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px
+}
+
+.col-4 {
+    grid-column: span 4
+}
+
+.col-8 {
+    grid-column: span 8
+}
+
+.col-12 {
+    grid-column: span 12
+}
+
+@media (max-width:900px) {
+    .sidebar {
+        position: fixed;
+        z-index: 30;
+        height: 100vh;
+        left: -320px
+    }
+
+    .sidebar.open {
+        left: 0
+    }
+
+    .app {
+        flex-direction: column
+    }
+
+    .grid {
+        grid-template-columns: repeat(1, 1fr)
+    }
+
+    .col-4,
+    .col-8 {
+        grid-column: span 1
+    }
+
+    .main {
+        padding: 12px
+    }
+}
+
+/* Card */
+.card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 6px 18px rgba(8, 15, 30, .04)
+}
+
+.card h3 {
+    margin: 0 0 8px 0;
+    font-size: 15px
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.stat .value {
+    font-size: 20px;
+    font-weight: 700
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eef2f7
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #60a5fa, #7c3aed);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600
+}
+
+/* utilities */
+.muted {
+    color: var(--muted)
+}
+
+.flex {
+    display: flex;
+    align-items: center
+}
+
+.gap-8 {
+    gap: 8px
+}
